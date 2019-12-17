@@ -7,7 +7,6 @@ const tableName = 'offers';
 const Offer = sequelize.define('Offer', {
   title: {
     type: Sequelize.STRING,
-    unique: true,
   },
   content: {
     type: Sequelize.STRING,
