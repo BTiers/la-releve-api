@@ -1,13 +1,14 @@
 /**
  * third party libraries
  */
+require('dotenv').config()
+
 const bodyParser = require('body-parser');
 const express = require('express');
 const helmet = require('helmet');
 const http = require('http');
 const mapRoutes = require('express-routes-mapper');
 const cors = require('cors');
-
 /**
  * server configuration
  */
