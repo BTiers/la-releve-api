@@ -50,7 +50,7 @@ const UserController = () => {
           return res.status(200).json({ token, user });
         }
 
-        return res.status(401).json(AuthErrors.auth0001);
+        return res.status(401).json(AuthErrors.UNAUTHORIZE);
       } catch (err) {
         console.log(err);
         return res.status(400).json(BaseErrors.INTERNAL_ERROR);

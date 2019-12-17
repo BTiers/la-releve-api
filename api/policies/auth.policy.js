@@ -15,20 +15,20 @@ module.exports = (req, res, next) => {
       if (/^Bearer$/.test(scheme)) {
         tokenToVerify = credentials;
       } else {
-        return res.status(401).json(AuthErrors.auth0003);
+        return res.status(401).json(AuthErrors.INVALID_TOKEN_FORMAT);
       }
     } else {
-      return res.status(401).json(AuthErrors.auth0003);
+      return res.status(401).json(AuthErrors.INVALID_TOKEN_FORMAT);
     }
   } else if (req.body.token) {
     tokenToVerify = req.body.token;
     delete req.query.token;
   } else {
-    return res.status(401).json(AuthErrors.auth0004);
+    return res.status(401).json(AuthErrors.NO_AUTH_HEADER);
   }
 
   return JWTService().verify(tokenToVerify, (err, thisToken) => {
-    if (err) return res.status(401).json(AuthErrors.auth0002);
+    if (err) return res.status(401).json(AuthErrors.INVALID_TOKEN);
     req.token = thisToken;
     return next();
   });
